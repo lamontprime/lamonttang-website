@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Lamont Tang">
+  <rect width="64" height="64" rx="8" fill="#1A2B4A"/>
+  <path d="M15 14h8v29h15v7H15V14Z" fill="#F8F6F1"/>
+  <path d="M33 14h20v7h-6v29h-8V21h-6v-7Z" fill="#B45309"/>
+</svg>

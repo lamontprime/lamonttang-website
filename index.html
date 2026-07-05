@@ -1,0 +1,1571 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lamont Tang | AI Strategy Built in the Trenches</title>
+  <meta name="description" content="Lamont Tang teaches AI Strategy and Entrepreneurship at AGSM, connecting industry leaders, MBA students, founders, and investors through practical AI transformation work.">
+  <meta name="theme-color" content="#0C1524">
+  <meta property="og:title" content="Lamont Tang | AI Strategy Built in the Trenches">
+  <meta property="og:description" content="MBA rigor meets startup reality. Diagnostics, courses, book previews, opportunities, and practical AI strategy for leaders, MBAs, and founders.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lamonttang.com/">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1600&q=80">
+  <link rel="canonical" href="https://lamonttang.com/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1A2B4A;
+      --navy-deep: #13213A;
+      --ink-dark: #0C1524;          /* dark canvas */
+      --ink-darker: #080F1B;
+      --amber: #B45309;             /* brand amber (light bg) */
+      --amber-vivid: #D97706;       /* action amber (dark bg) */
+      --amber-bright: #F59E0B;      /* readouts on dark */
+      --amber-soft: #F8D8A6;
+      --blue: #2563EB;
+      --charcoal: #2D3142;
+      --slate: #64748B;
+      --offwhite: #F8F6F1;
+      --sage: #6B8F71;
+      --sage-bright: #8FB596;
+      --white: #FFFFFF;
+      --line: #E5DFD3;
+      --line-strong: rgba(26, 43, 74, 0.15);
+      --line-dark: rgba(248, 246, 241, 0.12);
+      --ink-soft: rgba(45, 49, 66, 0.75);
+      --text-dark-soft: rgba(248, 246, 241, 0.72);
+      --shadow-sm: 0 1px 2px rgba(12, 21, 36, 0.06);
+      --shadow-md: 0 8px 24px rgba(12, 21, 36, 0.1);
+      --shadow-lg: 0 24px 60px rgba(12, 21, 36, 0.22);
+      --radius: 8px;
+      --font-head: Montserrat, Arial, sans-serif;
+      --font-body: Inter, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--charcoal);
+      background: var(--offwhite);
+      font-family: var(--font-body);
+      font-size: 16.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    body.menu-open { overflow: hidden; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, select, textarea { font: inherit; }
+    ::selection { background: rgba(217, 119, 6, 0.28); }
+    :focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.5);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-head); margin-top: 0; }
+    p { margin-top: 0; color: var(--ink-soft); }
+    h1 {
+      max-width: 820px;
+      color: var(--white);
+      font-size: clamp(2.7rem, 6.4vw, 4.6rem);
+      font-weight: 800;
+      line-height: 0.99;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.7rem, 3.4vw, 2.45rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.9rem;
+      max-width: 720px;
+    }
+    h3 {
+      color: var(--navy);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.55rem;
+    }
+    h4 { color: var(--navy); font-size: 0.94rem; font-weight: 700; margin-bottom: 0.4rem; }
+
+    .section { padding: clamp(4rem, 9vw, 7rem) 1.25rem; position: relative; }
+    .section + .section { border-top: 1px solid rgba(26, 43, 74, 0.06); }
+    .section.alt { background: var(--white); }
+    .container { width: min(1160px, 100%); margin: 0 auto; position: relative; }
+    .narrow { max-width: 660px; }
+    .section-head { margin-bottom: clamp(1.8rem, 4vw, 3rem); }
+
+    /* ---------- Dark sections (AI-native canvas) ---------- */
+    .dark {
+      background:
+        radial-gradient(1100px 480px at 85% -10%, rgba(37, 99, 235, 0.13), transparent 60%),
+        radial-gradient(900px 420px at 0% 110%, rgba(217, 119, 6, 0.1), transparent 55%),
+        var(--ink-dark);
+      color: var(--offwhite);
+      border-top: 0 !important;
+    }
+    .dark::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(248, 246, 241, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(248, 246, 241, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.35));
+      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(0,0,0,0.35));
+    }
+    .dark h2, .dark h3, .dark h4 { color: var(--offwhite); }
+    .dark p { color: var(--text-dark-soft); }
+
+    /* ---------- Technical labels ---------- */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--amber);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .eyebrow .idx { color: var(--slate); font-weight: 500; }
+    .eyebrow .idx::after { content: " /"; opacity: 0.6; }
+    .dark .eyebrow { color: var(--amber-bright); }
+    .dark .eyebrow .idx { color: rgba(248, 246, 241, 0.45); }
+
+    .lead { font-size: clamp(1.02rem, 1.9vw, 1.18rem); line-height: 1.6; color: var(--ink-soft); font-weight: 400; }
+    .dark .lead { color: var(--text-dark-soft); }
+    .small { font-size: 0.78rem; color: var(--slate); line-height: 1.5; }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.8rem;
+      padding: 0.28rem 0.65rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 4px;
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.7);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.34rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      background: rgba(217, 119, 6, 0.12);
+      color: var(--amber-bright);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--amber-bright);
+      box-shadow: 0 0 8px rgba(245, 158, 11, 0.8);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      min-height: 68px;
+      background: rgba(12, 21, 36, 0.82);
+      backdrop-filter: blur(16px) saturate(1.4);
+      -webkit-backdrop-filter: blur(16px) saturate(1.4);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s ease;
+    }
+    .nav.scrolled { border-bottom-color: var(--line-dark); }
+    .nav-inner {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      color: var(--offwhite);
+      font-family: var(--font-head);
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .brand span { color: var(--amber-bright); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(248, 246, 241, 0.78);
+      padding: 0.45rem 0;
+      transition: color 0.15s ease;
+    }
+    .nav-links a:hover { color: var(--amber-bright); }
+    .nav-links a.button { padding: 0.5rem 1rem; min-height: 40px; color: var(--white); }
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line-dark);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--offwhite);
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    /* ---------- Buttons ---------- */
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 48px;
+      padding: 0.76rem 1.4rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--navy);
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+    }
+    .button::after { content: "→"; font-weight: 500; transition: transform 0.16s ease; }
+    .button:hover { transform: translateY(-1px); background: var(--navy-deep); box-shadow: var(--shadow-md); }
+    .button:hover::after { transform: translateX(3px); }
+    .button:active { transform: translateY(0); }
+    .button[disabled] { opacity: 0.55; cursor: wait; transform: none; }
+    .button.secondary { background: transparent; color: var(--navy); border-color: rgba(26, 43, 74, 0.35); }
+    .button.secondary:hover { background: rgba(26, 43, 74, 0.05); border-color: var(--navy); box-shadow: none; }
+    .button.light { border-color: var(--white); background: var(--white); color: var(--ink-dark); }
+    .button.light:hover { background: var(--offwhite); }
+    .button.ghost-light { background: transparent; border-color: rgba(248, 246, 241, 0.35); color: var(--offwhite); }
+    .button.ghost-light:hover { background: rgba(248, 246, 241, 0.08); border-color: var(--offwhite); box-shadow: none; }
+    .button.text {
+      border: 0;
+      background: transparent;
+      color: var(--amber);
+      padding: 0;
+      min-height: auto;
+      font-weight: 600;
+    }
+    .button.text:hover { transform: none; box-shadow: none; color: var(--navy); background: transparent; }
+    /* Amber primary + light outline inside dark sections */
+    .dark .button:not(.light):not(.ghost-light):not(.secondary):not(.text) {
+      background: var(--amber-vivid);
+      border-color: var(--amber-vivid);
+      color: var(--white);
+      box-shadow: 0 0 0 rgba(217, 119, 6, 0);
+    }
+    .dark .button:not(.light):not(.ghost-light):not(.secondary):not(.text):hover {
+      background: #C2680A;
+      box-shadow: 0 6px 22px rgba(217, 119, 6, 0.35);
+    }
+    .dark .button.secondary { border-color: rgba(248, 246, 241, 0.3); color: var(--offwhite); }
+    .dark .button.secondary:hover { background: rgba(248, 246, 241, 0.07); border-color: var(--offwhite); }
+    .dark .button.text { color: var(--amber-bright); }
+    .dark .button.text:hover { color: var(--offwhite); }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 94vh;
+      padding: 7rem 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      color: var(--white);
+      background:
+        linear-gradient(100deg, rgba(8, 15, 27, 0.96) 10%, rgba(8, 15, 27, 0.82) 45%, rgba(12, 21, 36, 0.45) 100%),
+        url("https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=2200&q=82") center/cover;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(248, 246, 241, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(248, 246, 241, 0.04) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(900px 600px at 20% 80%, rgba(0,0,0,0.85), transparent 75%);
+      -webkit-mask-image: radial-gradient(900px 600px at 20% 80%, rgba(0,0,0,0.85), transparent 75%);
+    }
+    .hero .container { position: relative; }
+    .hero .eyebrow { color: var(--amber-bright); }
+    .hero .eyebrow .idx { color: rgba(248, 246, 241, 0.45); }
+    .hero .lead { color: rgba(248, 246, 241, 0.82); max-width: 600px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.1rem; }
+    .hero-cred {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 2rem;
+      margin: 3.2rem 0 0;
+      padding: 1.4rem 0 2.4rem;
+      border-top: 1px solid var(--line-dark);
+      list-style: none;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(248, 246, 241, 0.68);
+    }
+    .hero-cred li { display: flex; align-items: center; gap: 0.6rem; }
+    .hero-cred li::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--amber-bright);
+      box-shadow: 0 0 6px rgba(245, 158, 11, 0.7);
+      flex: none;
+    }
+
+    /* ---------- Cards ---------- */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .card strong { color: var(--navy); }
+    .card p:last-child { margin-bottom: 0; }
+    .card.lift:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--line-strong); }
+    .card.accent { border-top: 2px solid var(--amber); }
+    .card.blue { border-top: 2px solid var(--blue); }
+    .card.sage { border-top: 2px solid var(--sage); }
+    .card-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--slate);
+      margin-bottom: 0.6rem;
+    }
+    .card.blue .card-eyebrow { color: var(--blue); }
+    .card.sage .card-eyebrow { color: var(--sage); }
+    .card.accent .card-eyebrow { color: var(--amber); }
+    .card-list {
+      margin: 1rem 0 1.35rem;
+      padding: 0;
+      list-style: none;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+    .card-list li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.45rem;
+    }
+    .card-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 6px;
+      height: 2px;
+      background: var(--amber);
+    }
+    .dark .card-list { color: var(--text-dark-soft); }
+    .dark .card-list li::before { background: var(--amber-bright); }
+
+    /* Glass cards for dark sections */
+    .dark .card {
+      background: rgba(248, 246, 241, 0.035);
+      border-color: var(--line-dark);
+      box-shadow: none;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    .dark .card.lift:hover { border-color: rgba(248, 246, 241, 0.28); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35); }
+
+    .pathways {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.1rem;
+      margin-top: 2.2rem;
+    }
+    .pathways .card { display: flex; flex-direction: column; padding: 1.8rem 1.6rem; }
+    .pathways .card > a { margin-top: auto; align-self: start; }
+    .pathways .card p { margin-bottom: 0; }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: clamp(2.4rem, 5vw, 3.8rem);
+      padding-top: 2rem;
+      border-top: 1px solid var(--line-strong);
+    }
+    .metric {
+      font-family: var(--font-mono);
+      color: var(--navy);
+      font-weight: 600;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+    .metric span {
+      display: block;
+      margin-top: 0.6rem;
+      font-family: var(--font-body);
+      color: var(--slate);
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+    }
+
+    /* ---------- Split layouts ---------- */
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: clamp(2rem, 5vw, 3.5rem);
+      align-items: center;
+    }
+    .image-panel {
+      min-height: 520px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      background: var(--navy);
+      margin: 0;
+    }
+    .image-panel img { width: 100%; height: 100%; object-fit: cover; min-height: 520px; }
+    .story-stack { display: grid; gap: 1rem; margin-top: 1.6rem; }
+    .story-stack .card { background: rgba(255, 255, 255, 0.8); padding: 1.25rem 1.4rem; }
+    .story-stack .card h3 { font-size: 0.98rem; margin-bottom: 0.35rem; }
+    .story-stack .card p { font-size: 0.93rem; margin-bottom: 0; }
+
+    /* ---------- Diagnostics (dark showpiece) ---------- */
+    .diagnostic-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.2rem;
+      margin-top: 2rem;
+      align-items: start;
+    }
+    .diagnostic-card {
+      padding: 2rem 1.8rem;
+      border-top: 2px solid var(--amber-vivid) !important;
+    }
+    .diagnostic-card .badge { margin-bottom: 1.1rem; }
+    .range-row {
+      display: grid;
+      grid-template-columns: 1fr 170px 52px;
+      gap: 0.9rem;
+      align-items: center;
+      padding: 0.74rem 0;
+      border-bottom: 1px solid rgba(248, 246, 241, 0.08);
+    }
+    .range-row label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--offwhite);
+      letter-spacing: 0.01em;
+    }
+    .range-value {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--amber-bright);
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    input[type="range"] {
+      width: 100%;
+      height: 22px;
+      margin: 0;
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      accent-color: var(--amber-vivid);
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-runnable-track {
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(248, 246, 241, 0.18);
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      margin-top: -6.5px;
+      border-radius: 50%;
+      background: var(--amber-bright);
+      border: 2px solid var(--ink-dark);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    }
+    input[type="range"]::-moz-range-track {
+      height: 3px;
+      border-radius: 2px;
+      background: rgba(248, 246, 241, 0.18);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--amber-bright);
+      border: 2px solid var(--ink-dark);
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    }
+
+    .score-shell { margin: 1.3rem 0 1.5rem; }
+    .score-track {
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(248, 246, 241, 0.12);
+      overflow: hidden;
+      margin-bottom: 0.9rem;
+    }
+    .score-fill {
+      height: 100%;
+      width: 60%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--amber-vivid), var(--amber-bright));
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.55);
+      transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .score-box {
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius);
+      background: rgba(248, 246, 241, 0.05);
+      border: 1px solid var(--line-dark);
+      color: var(--offwhite);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+    }
+    .score-box span {
+      color: var(--amber-bright);
+      font-size: 1.3em;
+      font-weight: 600;
+      text-shadow: 0 0 18px rgba(245, 158, 11, 0.4);
+    }
+
+    /* ---------- Tabs ---------- */
+    .tabs { margin-top: 2rem; }
+    .tab-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid var(--line-strong);
+    }
+    .tab-button {
+      min-height: 44px;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--white);
+      color: var(--navy);
+      padding: 0.55rem 1.05rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+    .tab-button:hover { border-color: var(--navy); }
+    .tab-button.active { background: var(--navy); color: var(--offwhite); border-color: var(--navy); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: grid; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+
+    .content-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: calc(var(--radius) - 2px);
+      margin-bottom: 1.1rem;
+    }
+    .opportunity-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 0.9rem 0 1.1rem;
+    }
+
+    /* ---------- Forms ---------- */
+    form { display: grid; gap: 0.95rem; }
+    label {
+      display: grid;
+      gap: 0.38rem;
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      background: var(--white);
+      padding: 0.72rem 0.85rem;
+      color: var(--charcoal);
+      font-size: 0.92rem;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    textarea { min-height: 112px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--amber);
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.16);
+    }
+    ::placeholder { color: rgba(100, 116, 139, 0.7); }
+    /* Dark-section form fields */
+    .dark label { color: rgba(248, 246, 241, 0.85); }
+    .dark input, .dark select, .dark textarea {
+      background: rgba(248, 246, 241, 0.06);
+      border-color: rgba(248, 246, 241, 0.18);
+      color: var(--offwhite);
+    }
+    .dark select option { color: var(--charcoal); background: var(--white); }
+    .dark input:focus, .dark select:focus, .dark textarea:focus {
+      border-color: var(--amber-bright);
+      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
+    }
+    .dark ::placeholder { color: rgba(248, 246, 241, 0.4); }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem; }
+    .check-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.55rem; }
+    .check {
+      display: flex;
+      gap: 0.5rem;
+      align-items: start;
+      color: var(--ink-soft);
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .check input { width: auto; margin-top: 0.2rem; accent-color: var(--amber); }
+    .form-note { font-size: 0.74rem; color: var(--slate); line-height: 1.5; margin: 0; }
+    .dark .form-note { color: rgba(248, 246, 241, 0.5); }
+    .form-status {
+      display: none;
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      background: rgba(37, 99, 235, 0.09);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      color: var(--navy);
+      font-size: 0.8rem;
+      font-weight: 500;
+      line-height: 1.55;
+    }
+    .form-status.show { display: block; }
+    .form-status.success { background: rgba(107, 143, 113, 0.14); border-color: rgba(107, 143, 113, 0.35); }
+    .form-status.error { background: rgba(217, 119, 6, 0.1); border-color: rgba(217, 119, 6, 0.3); }
+    .dark .form-status { background: rgba(37, 99, 235, 0.14); border-color: rgba(37, 99, 235, 0.35); color: var(--offwhite); }
+    .dark .form-status.success { background: rgba(107, 143, 113, 0.16); border-color: rgba(143, 181, 150, 0.4); }
+    .dark .form-status.error { background: rgba(217, 119, 6, 0.14); border-color: rgba(245, 158, 11, 0.4); }
+
+    /* Report-ready state: success panel when .show is applied */
+    .report-actions {
+      display: none;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.2rem;
+      padding: 1.1rem 1.2rem;
+      border-radius: var(--radius);
+      background: rgba(107, 143, 113, 0.12);
+      border: 1px solid rgba(143, 181, 150, 0.35);
+      border-left: 2px solid var(--sage-bright);
+    }
+    .report-actions.show { display: flex; }
+    .report-actions::before {
+      content: "REPORT READY";
+      flex-basis: 100%;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--sage-bright);
+    }
+
+    details { border-top: 1px solid var(--line-strong); padding: 1rem 0; }
+    summary { cursor: pointer; color: var(--navy); font-weight: 700; font-size: 0.9rem; font-family: var(--font-body); }
+    details p { margin: 0.65rem 0 0; font-size: 0.95rem; }
+
+    /* ---------- CTA band ---------- */
+    .cta-band {
+      position: relative;
+      background:
+        radial-gradient(800px 380px at 80% 0%, rgba(37, 99, 235, 0.16), transparent 60%),
+        radial-gradient(700px 340px at 10% 100%, rgba(217, 119, 6, 0.12), transparent 55%),
+        var(--ink-dark);
+      color: var(--white);
+      padding: clamp(4rem, 8vw, 6rem) 1.25rem;
+    }
+    .cta-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(248, 246, 241, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(248, 246, 241, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent);
+      -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.7), transparent);
+    }
+    .cta-band .container { position: relative; }
+    .cta-band .eyebrow { color: var(--amber-bright); }
+    .cta-band .eyebrow .idx { color: rgba(248, 246, 241, 0.45); }
+    .cta-band h2 { color: var(--white); max-width: 640px; }
+    .cta-band p { color: rgba(248, 246, 241, 0.75); }
+
+    footer {
+      background: var(--ink-darker);
+      color: rgba(248, 246, 241, 0.68);
+      padding: clamp(2.6rem, 6vw, 3.6rem) 1.25rem;
+      font-size: 0.82rem;
+      border-top: 1px solid var(--line-dark);
+    }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 2rem; }
+    footer a { display: block; color: rgba(248, 246, 241, 0.68); text-decoration: none; margin-bottom: 0.5rem; transition: color 0.15s ease; }
+    footer a:hover { color: var(--amber-bright); }
+    footer h4 { color: var(--offwhite); }
+    .footer-bottom {
+      margin-top: 2.4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(248, 246, 241, 0.1);
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: rgba(248, 246, 241, 0.45);
+    }
+
+    /* ---------- Scroll reveal ---------- */
+    @media (prefers-reduced-motion: no-preference) {
+      .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+      .js .reveal.in { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        inset: 68px 0 auto 0;
+        display: none;
+        padding: 1rem 1.25rem 1.6rem;
+        background: var(--ink-dark);
+        border-bottom: 1px solid var(--line-dark);
+        box-shadow: var(--shadow-lg);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.2rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { min-height: 48px; display: flex; align-items: center; border-bottom: 1px solid rgba(248, 246, 241, 0.07); }
+      .nav-links a.button { margin-top: 0.8rem; justify-content: center; border-bottom: 1px solid var(--amber-vivid); }
+      .menu-toggle { display: block; }
+      .pathways, .diagnostic-grid, .split, .grid-3, .grid-4, .footer-grid { grid-template-columns: 1fr; }
+      .metric-grid, .grid-2 { grid-template-columns: repeat(2, 1fr); }
+      .image-panel, .image-panel img { min-height: 380px; }
+      .split .image-panel { order: -1; }
+    }
+    @media (max-width: 640px) {
+      body { font-size: 16px; }
+      .hero { min-height: 90vh; padding-top: 5rem; }
+      .hero-cred { gap: 0.6rem 1.2rem; padding-bottom: 1.8rem; }
+      .metric-grid, .grid-2, .form-grid, .check-grid { grid-template-columns: 1fr; }
+      .range-row { grid-template-columns: 1fr 52px; }
+      .range-row input[type="range"] { grid-column: 1 / -1; }
+      .range-row .range-value { grid-row: 1; grid-column: 2; }
+      .range-row label { grid-row: 1; grid-column: 1; }
+      .hero-actions .button, .cta-band .button { width: 100%; }
+      .diagnostic-card { padding: 1.5rem 1.25rem; }
+      .card { padding: 1.35rem 1.25rem; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Lamont Tang",
+    "url": "https://lamonttang.com",
+    "jobTitle": "MBA Faculty and AI Strategy Educator",
+    "affiliation": [
+      {"@type": "Organization", "name": "AGSM at UNSW Business School"},
+      {"@type": "Organization", "name": "Stanford StartX"}
+    ],
+    "knowsAbout": ["AI strategy", "Entrepreneurship", "AI transformation", "MBA education", "Startup strategy"]
+  }
+  </script>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Lamont <span>Tang</span></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" type="button">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#diagnostics">Diagnostics</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#opportunities">MBA Opportunities</a></li>
+        <li><a href="#speaking">Speaking</a></li>
+        <li><a href="#content">Content</a></li>
+        <li><a class="button" href="#newsletter">Subscribe</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <!-- PLACEHOLDER: Replace hero background with an actual Lamont photo or live speaking image (3000x2000px min, warm + credible). -->
+    <div class="container">
+      <p class="eyebrow"><span class="idx">00</span>AI Strategy &amp; Entrepreneurship</p>
+      <h1>AI Strategy.<br>Built in the Trenches.</h1>
+      <p class="lead">Twenty years in AI — before the hype cycles, before ChatGPT, before it was a career move. This is what actually works when MBA rigor meets startup reality.</p>
+      <div class="hero-actions">
+        <a class="button light" href="#diagnostics">Get your AI Readiness Snapshot</a>
+        <a class="button ghost-light" href="#newsletter">Join the newsletter</a>
+      </div>
+      <ul class="hero-cred" aria-label="Credentials">
+        <li>MBA Faculty, AGSM (UNSW)</li>
+        <li>Former AI Hardware Founder</li>
+        <li>Stanford StartX</li>
+        <li>Book in Progress</li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="section alt" id="pathways">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="idx">01</span>Start Here</p>
+          <h2>Three ways in. Pick the one that fits.</h2>
+          <p class="lead narrow">Whether you run a company, an MBA cohort schedule, or a startup — each path ends in a concrete next step, not a generic contact form.</p>
+        </div>
+        <div class="pathways">
+          <article class="card blue lift reveal">
+            <p class="card-eyebrow">For Corporate Leaders</p>
+            <h3>Find out if your organization is actually ready for AI.</h3>
+            <p>Take the readiness snapshot, then scope a structured 10-week engagement with MBA and technical talent.</p>
+            <ul class="card-list">
+              <li>AI Readiness Snapshot — free, 3 minutes</li>
+              <li>Industry Projects intake</li>
+              <li>Quarterly insight updates from live projects</li>
+            </ul>
+            <a class="button secondary" href="#industry-form">Submit a project brief</a>
+          </article>
+          <article class="card sage lift reveal">
+            <p class="card-eyebrow">For MBA Students</p>
+            <h3>Turn coursework into career options.</h3>
+            <p>Live projects, startup exposure, and roles where AI strategy is actually happening — not just discussed.</p>
+            <ul class="card-list">
+              <li>Opportunities Digest — roles and projects</li>
+              <li>Founder Clinic team placements</li>
+              <li>Early access to book chapters</li>
+            </ul>
+            <a class="button secondary" href="#mba-form">Join the MBA list</a>
+          </article>
+          <article class="card accent lift reveal">
+            <p class="card-eyebrow">For Founders &amp; Investors</p>
+            <h3>Bring a real problem. Leave with a sharper one.</h3>
+            <p>Pricing, go-to-market, AI workflow design — tested by a structured MBA strategy engagement.</p>
+            <ul class="card-list">
+              <li>Founder Clinic application</li>
+              <li>Leadership Acuity Profile</li>
+              <li>Founder Insights newsletter</li>
+            </ul>
+            <a class="button secondary" href="#founder-form">Apply to the Founder Clinic</a>
+          </article>
+        </div>
+        <div class="metric-grid reveal" aria-label="Proof points">
+          <div class="metric">20+<span>Years in AI, before the hype</span></div>
+          <div class="metric">5<span>Dimensions in the readiness snapshot</span></div>
+          <div class="metric">10wk<span>Structured Industry Projects engagement</span></div>
+          <div class="metric">3<span>Audience paths, each with its own intake</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container split">
+        <div class="reveal">
+          <p class="eyebrow"><span class="idx">02</span>About Lamont</p>
+          <h2>Computational neuroscientist. Former AI hardware founder. MBA faculty. Bridge builder.</h2>
+          <p>AI strategy is easy to talk about and hard to execute. Lamont teaches from the execution side: the messy middle where founders, executives, engineers, and MBAs have to make decisions with incomplete information.</p>
+          <div class="story-stack">
+            <article class="card">
+              <h3>20 years before the hype</h3>
+              <p>Long before AI became a board slide, the work was closer to science, hardware, product judgment, and painful tradeoffs. That history matters because the same failure patterns keep returning in new packaging.</p>
+            </article>
+            <article class="card">
+              <h3>The faculty moment</h3>
+              <p>At AGSM, the classroom becomes a live operating room: students examine real companies, real constraints, and real adoption problems. This is what the textbook will not tell you.</p>
+            </article>
+            <article class="card">
+              <h3>The bridge builder</h3>
+              <p>The work connects startups to corporates, MBAs to operators, and research to practice. The goal is simple: close the gap between knowing and doing.</p>
+            </article>
+          </div>
+        </div>
+        <figure class="image-panel reveal">
+          <!-- PLACEHOLDER: Replace with an actual Lamont portrait, classroom, or speaking photo. -->
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=82" alt="Professional strategy discussion in a classroom-style setting" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section dark" id="diagnostics">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="idx">03</span>The Diagnostic</p>
+          <h2>Where do you actually stand on AI?</h2>
+          <p class="lead narrow">Five sliders. Three minutes. An honest read on whether your organization is ready to move from AI theatre to useful adoption — with a PDF report sent to your inbox.</p>
+        </div>
+        <div class="diagnostic-grid">
+          <article class="card diagnostic-card reveal">
+            <span class="badge">Free · 3 minutes</span>
+            <h3>AI Readiness Snapshot</h3>
+            <p>Score yourself across the five dimensions where AI transformations most often stall. Honest answers get useful reports.</p>
+            <div class="range-row">
+              <label for="leadership">Leadership clarity</label>
+              <input id="leadership" class="score-input" type="range" min="1" max="5" value="3" aria-describedby="scoreBox">
+              <output class="range-value" data-for="leadership">3 / 5</output>
+            </div>
+            <div class="range-row">
+              <label for="culture">Culture and incentives</label>
+              <input id="culture" class="score-input" type="range" min="1" max="5" value="3" aria-describedby="scoreBox">
+              <output class="range-value" data-for="culture">3 / 5</output>
+            </div>
+            <div class="range-row">
+              <label for="data">Data and infrastructure</label>
+              <input id="data" class="score-input" type="range" min="1" max="5" value="3" aria-describedby="scoreBox">
+              <output class="range-value" data-for="data">3 / 5</output>
+            </div>
+            <div class="range-row">
+              <label for="workflow">Workflow adoption</label>
+              <input id="workflow" class="score-input" type="range" min="1" max="5" value="3" aria-describedby="scoreBox">
+              <output class="range-value" data-for="workflow">3 / 5</output>
+            </div>
+            <div class="range-row">
+              <label for="governance">Governance judgment</label>
+              <input id="governance" class="score-input" type="range" min="1" max="5" value="3" aria-describedby="scoreBox">
+              <output class="range-value" data-for="governance">3 / 5</output>
+            </div>
+            <div class="score-shell">
+              <div class="score-track" aria-hidden="true"><div class="score-fill" id="scoreFill"></div></div>
+              <div class="score-box" id="scoreBox" role="status" aria-live="polite">Readiness score: <span>60%</span>. Useful foundation, but adoption risk is still visible.</div>
+            </div>
+            <form class="capture-form diagnostic-report-form" data-form-name="diagnostic">
+              <div class="form-grid">
+                <label>First name<input name="first_name" autocomplete="given-name" required></label>
+                <label>Email<input type="email" name="email" autocomplete="email" required></label>
+              </div>
+              <label>Which lens fits best?
+                <select name="segment" required>
+                  <option value="">Choose one...</option>
+                  <option>Corporate leader / industry partner</option>
+                  <option>MBA student</option>
+                  <option>Founder / investor</option>
+                  <option>General reader</option>
+                </select>
+              </label>
+              <button class="button" type="submit">Email me the full report</button>
+              <p class="form-note">You get the report. Nothing else, unless you ask for it.</p>
+              <div class="form-status" role="status">Preparing your report...</div>
+              <div class="report-actions" aria-label="Diagnostic report actions">
+                <a class="button secondary report-download" href="#" download="Lamont-Tang-AI-Readiness-Snapshot.pdf">Download PDF</a>
+                <a class="button text" href="#connect">Talk through the result</a>
+              </div>
+            </form>
+          </article>
+          <article class="card lift reveal">
+            <span class="badge">Deep Dive</span>
+            <h3>AI Leadership Acuity Profile</h3>
+            <p>A deeper assessment for executives, founders, and investors who want more than a snapshot.</p>
+            <ul class="card-list">
+              <li>25 questions across strategy, culture, technical fluency, change leadership, and peer benchmarking</li>
+              <li>Free quiz entry, with an optional $47 eight-page report</li>
+              <li>A direct path into speaking, advisory, or Industry Projects scoping</li>
+            </ul>
+            <!-- PLACEHOLDER: Replace href with Typeform/Tally URL for AI Leadership Acuity Profile once the quiz exists. -->
+            <a class="button secondary" href="#connect">Take the deep dive</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="book">
+      <div class="container split">
+        <div class="card reveal" aria-label="Book cover placeholder" style="padding:0;overflow:hidden;">
+          <!-- PLACEHOLDER: Replace with final book cover image. -->
+          <div style="min-height:520px;background:linear-gradient(160deg,#0C1524 0%,#1A2B4A 48%,#B45309 100%);display:flex;flex-direction:column;justify-content:space-between;padding:2.4rem;color:white;">
+            <p class="eyebrow" style="color:#F8D8A6;">Book in Progress</p>
+            <div>
+              <h2 style="color:white;">AI Transformation</h2>
+              <p style="color:rgba(255,255,255,0.82);">A practitioner's guide to why most AI strategies fail, and the patterns that work.</p>
+            </div>
+            <strong style="font-family:Montserrat,Arial,sans-serif;letter-spacing:0.04em;">Lamont Tang</strong>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow"><span class="idx">04</span>Book Drip</p>
+          <h2>Serialized concepts for leaders who want the honest version.</h2>
+          <p>Chapters release progressively: excerpts, framework previews, and early-access gates. The best material starts as teaching notes, survives contact with a real classroom, and only then becomes a chapter.</p>
+          <div class="grid-2" style="margin-top:1.6rem;">
+            <article class="card lift"><h3>The AI Readiness Trap</h3><p>Why tool adoption can look like progress while execution capability stays flat.</p><span class="tag">Preview live</span></article>
+            <article class="card lift"><h3>Misaligned Incentives</h3><p>The hidden cost of rewarding pilots instead of operating change.</p><span class="tag">Email gated</span></article>
+            <article class="card lift"><h3>Build, Buy, Partner</h3><p>A decision lens for leaders who need to move before certainty arrives.</p><span class="tag">Coming soon</span></article>
+            <article class="card lift"><h3>Sustainable AI Patterns</h3><p>Three patterns that keep showing up in durable AI transformations.</p><span class="tag">Coming soon</span></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="courses">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="idx">05</span>Courses and Programs</p>
+          <h2>Real problems, structured learning, practical outputs.</h2>
+        </div>
+        <div class="tabs reveal">
+          <div class="tab-buttons" role="tablist" aria-label="Course tabs">
+            <button class="tab-button active" type="button" data-tab="industry">Industry Projects</button>
+            <button class="tab-button" type="button" data-tab="entrepreneurship">Entrepreneurship</button>
+            <button class="tab-button" type="button" data-tab="intensive">AI Strategy Intensive</button>
+          </div>
+          <div class="tab-panel grid-2 active" id="tab-industry">
+            <article class="card blue">
+              <h3>10-week AI strategy engagement</h3>
+              <p>Companies bring a live challenge. MBA and engineering students scope the problem, interview stakeholders, test assumptions, and produce a strategy recommendation with implementation logic.</p>
+              <ul class="card-list">
+                <li>Best for seed, Series A, SME, and transformation teams</li>
+                <li>Outputs include market maps, AI roadmaps, operating models, and GTM plans</li>
+                <li>Clear pipeline: Inquiry → Scoping → Confirmed → Active → Complete → Alumni</li>
+              </ul>
+              <a class="button secondary" href="#industry-form">Submit a project brief</a>
+            </article>
+            <article class="card">
+              <h3>Example project briefs</h3>
+              <p><strong>Enterprise automation roadmap:</strong> Identify workflows where AI creates measurable leverage without breaking trust.</p>
+              <p><strong>AI talent strategy:</strong> Map capability gaps and design the hiring or training plan.</p>
+              <p><strong>Product strategy:</strong> Pressure-test the AI wedge, buyer pain, and adoption path.</p>
+            </article>
+          </div>
+          <div class="tab-panel grid-2" id="tab-entrepreneurship">
+            <article class="card sage">
+              <h3>Founder × MBA Exchange</h3>
+              <p>Founders bring the hard problem: pricing, market sizing, AI workflow design, competitive positioning, or fundraising narrative. MBAs apply frameworks in a live engagement.</p>
+              <ul class="card-list">
+                <li>Founder intake plus MBA team matching</li>
+                <li>Lead, support, and observer roles for students</li>
+                <li>Designed for real constraints, not case-study neatness</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>What founders get</h3>
+              <p>A sharper version of the problem, an outside-in market read, and a practical recommendation that can be tested within weeks.</p>
+              <a class="button secondary" href="#founder-form">Apply as a founder</a>
+            </article>
+          </div>
+          <div class="tab-panel grid-2" id="tab-intensive">
+            <article class="card accent">
+              <h3>AI Strategy Intensive</h3>
+              <p>A proposed executive program for boards, C-suite teams, and senior operators moving from AI curiosity to accountable execution.</p>
+              <ul class="card-list">
+                <li>Board dialogue to operating choices</li>
+                <li>Readiness assessment and adoption design</li>
+                <li>Governance, workflow, talent, and business model implications</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Launch status</h3>
+              <p>Program page is ready for waitlist demand. Pricing, dates, and cohort format need final confirmation before public launch.</p>
+              <a class="button secondary" href="#connect">Check availability</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="opportunities">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="idx">06</span>MBA Opportunities</p>
+          <h2>Roles and projects where AI strategy is actually happening.</h2>
+          <p class="lead narrow">A rolling board of internships, projects, and roles sourced from industry partners and founder engagements.</p>
+          <!-- NOTE: This section is designed to become a CMS or Airtable-powered board. Sample postings below show the structure. -->
+        </div>
+        <div class="grid-3">
+          <article class="card lift reveal">
+            <h3>AI Product Strategy Intern</h3>
+            <p>Series A SaaS company seeking an MBA to map enterprise buyer pain and AI feature prioritization.</p>
+            <div class="opportunity-meta"><span class="tag">Internship</span><span class="tag">3 months</span><span class="tag">Paid</span></div>
+            <a class="button text" href="#mba-form">Express interest</a>
+          </article>
+          <article class="card lift reveal">
+            <h3>Transformation Project Lead</h3>
+            <p>Corporate team needs support scoping workflow automation opportunities and change readiness.</p>
+            <div class="opportunity-meta"><span class="tag">Project</span><span class="tag">10 weeks</span><span class="tag">Hybrid</span></div>
+            <a class="button text" href="#mba-form">Express interest</a>
+          </article>
+          <article class="card lift reveal">
+            <h3>Founder Clinic Team</h3>
+            <p>Join an MBA team helping a seed founder sharpen GTM, pricing, and investor narrative.</p>
+            <div class="opportunity-meta"><span class="tag">Course-linked</span><span class="tag">Strategy</span><span class="tag">Startup</span></div>
+            <a class="button text" href="#mba-form">Express interest</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="speaking">
+      <div class="container split">
+        <div class="reveal">
+          <p class="eyebrow"><span class="idx">07</span>Speaking</p>
+          <h2>Bringing AI strategy out of the shadows.</h2>
+          <p>Conference keynotes, board dinners, founder rooms, and MBA events work best when the conversation is concrete. The honest answer is often more useful than the polished one.</p>
+          <div class="grid-2" style="margin-top:1.6rem;">
+            <article class="card lift"><h3>The AI Readiness Trap</h3><p>Why most strategies fail after the pilot phase, and how leaders can spot the pattern early.</p></article>
+            <article class="card lift"><h3>Where Startups and Corporates Meet</h3><p>How the two worlds misunderstand each other, and where AI work creates real leverage.</p></article>
+            <article class="card lift"><h3>Leadership in Uncertainty</h3><p>How executives make AI decisions when the technology, market, and operating model keep shifting.</p></article>
+            <article class="card lift"><h3>MBA Talent and the AI Shift</h3><p>How business education can connect talent, founders, and industry problems faster.</p></article>
+          </div>
+        </div>
+        <figure class="image-panel reveal">
+          <!-- PLACEHOLDER: Replace with Lamont on stage or classroom photo. -->
+          <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=82" alt="Conference room with an audience watching a speaker" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="content">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="idx">08</span>Content Hub</p>
+          <h2>Essays, frameworks, videos, and book drip.</h2>
+        </div>
+        <div class="grid-3">
+          <article class="card content-card lift reveal">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80" alt="Strategic planning notes on a desk" loading="lazy">
+            <h3>Why Most AI Strategies Fail in Year Two</h3>
+            <p>The first year is excitement. The second year reveals whether the organization can change.</p>
+            <span class="tag">AI Strategy</span>
+          </article>
+          <article class="card content-card lift reveal">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=900&q=80" alt="Team discussion in a workshop" loading="lazy">
+            <h3>When MBA Thinking Meets Startup Reality</h3>
+            <p>Frameworks help, but only after they survive the facts on the ground.</p>
+            <span class="tag">Entrepreneurship</span>
+          </article>
+          <article class="card content-card lift reveal">
+            <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=900&q=80" alt="Writing desk with notebook and laptop" loading="lazy">
+            <h3>The Build, Buy, Partner Decision</h3>
+            <p>A chapter preview for leaders choosing how to create AI capability.</p>
+            <span class="tag">Book Drip</span>
+          </article>
+        </div>
+        <!-- NOTE: Integration placeholders — Substack RSS, YouTube playlist, podcast list, and gated PDF downloads can replace these manual cards. -->
+      </div>
+    </section>
+
+    <section class="section alt" id="newsletter">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="idx">09</span>Newsletter</p>
+          <h2>Three lists. One sign-up.</h2>
+          <p class="lead narrow">Pick your segment so the first email is already useful. No noise, unsubscribe anytime.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card blue lift reveal"><h3>AI Strategy Intel</h3><p>Frameworks, case studies, and field notes for MBAs and industry leaders.</p><span class="tag">Bi-weekly</span></article>
+          <article class="card sage lift reveal"><h3>Opportunities Digest</h3><p>Internships, startup roles, live projects, and event invitations for MBAs.</p><span class="tag">Weekly</span></article>
+          <article class="card accent lift reveal"><h3>Founder Insights</h3><p>GTM, pricing, AI workflow, and strategy patterns from live founder engagements.</p><span class="tag">Monthly</span></article>
+        </div>
+        <div class="card reveal" style="margin-top:1.1rem;">
+          <form class="capture-form" data-form-name="newsletter">
+            <div class="form-grid">
+              <label>First name<input name="first_name" autocomplete="given-name" required></label>
+              <label>Email<input type="email" name="email" autocomplete="email" required></label>
+            </div>
+            <label>Segment
+              <select name="segment" required>
+                <option value="">Choose one...</option>
+                <option>Corporate leader / industry partner</option>
+                <option>MBA student</option>
+                <option>Founder / investor</option>
+                <option>General reader</option>
+              </select>
+            </label>
+            <div class="check-grid" aria-label="Newsletter interests">
+              <label class="check"><input type="checkbox" name="list" value="ai-strategy"> AI Strategy Intel</label>
+              <label class="check"><input type="checkbox" name="list" value="opportunities"> Opportunities Digest</label>
+              <label class="check"><input type="checkbox" name="list" value="founder"> Founder Insights</label>
+              <label class="check"><input type="checkbox" name="list" value="book"> Book drip previews</label>
+            </div>
+            <button class="button" type="submit">Subscribe</button>
+            <p class="form-note">One useful email at a time. Unsubscribe whenever it stops being useful.</p>
+            <div class="form-status" role="status">Sending...</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="connect">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow"><span class="idx">10</span>Connect</p>
+          <h2>Bring something real.</h2>
+          <p class="lead narrow">A project brief, a career question, or a founder problem beats a generic hello. Pick the intake that fits.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card blue reveal" id="industry-form">
+            <p class="card-eyebrow">Corporate Leaders</p>
+            <h3>Industry Partner Intake</h3>
+            <form class="capture-form" data-form-name="industry">
+              <label>Company<input name="company" autocomplete="organization" required></label>
+              <label>Contact email<input type="email" name="email" autocomplete="email" required></label>
+              <label>Project or role type<select name="type" required><option value="">Choose...</option><option>Internship / hire</option><option>10-week consulting project</option><option>Strategic advisory inquiry</option></select></label>
+              <label>Challenge or role description<textarea name="description" required placeholder="What problem are you trying to solve, and what does success look like?"></textarea></label>
+              <button class="button secondary" type="submit">Submit inquiry</button>
+              <p class="form-note">Submissions are reviewed in weekly batches.</p>
+              <div class="form-status" role="status">Sending...</div>
+            </form>
+          </article>
+          <article class="card sage reveal" id="mba-form">
+            <p class="card-eyebrow">MBA Students</p>
+            <h3>MBA Student Intake</h3>
+            <form class="capture-form" data-form-name="mba">
+              <label>Name<input name="name" autocomplete="name" required></label>
+              <label>Email<input type="email" name="email" autocomplete="email" required></label>
+              <label>Cohort / program<input name="cohort" placeholder="Full-time MBA, EMBA, prospective..."></label>
+              <label>Career goal<select name="goal"><option>Consulting</option><option>Startup</option><option>Corporate AI</option><option>Founder</option><option>Exploring</option></select></label>
+              <button class="button secondary" type="submit">Join the MBA network</button>
+              <p class="form-note">Opportunities are matched to your goal, not blasted to everyone.</p>
+              <div class="form-status" role="status">Sending...</div>
+            </form>
+          </article>
+          <article class="card accent reveal" id="founder-form">
+            <p class="card-eyebrow">Founders &amp; Investors</p>
+            <h3>Founder Clinic Intake</h3>
+            <form class="capture-form" data-form-name="founder">
+              <label>Name<input name="name" autocomplete="name" required></label>
+              <label>Email<input type="email" name="email" autocomplete="email" required></label>
+              <label>Company and stage<input name="company_stage" placeholder="Seed fintech, Series A SaaS..." required></label>
+              <label>Help needed<select name="help"><option>Go-to-market strategy</option><option>AI workflow design</option><option>Pricing strategy</option><option>Financial modelling</option><option>Market sizing</option></select></label>
+              <label>Problem summary<textarea name="problem" required placeholder="Two or three honest sentences beat a pitch."></textarea></label>
+              <button class="button secondary" type="submit">Apply to the Founder Clinic</button>
+              <p class="form-note">Real constraints welcome. That is the point.</p>
+              <div class="form-status" role="status">Sending...</div>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      INTERNAL LAUNCH OPS (removed from the public page — see ASSET_INVENTORY.md):
+      - Replace placeholders: hero portrait, speaking photos, book cover, testimonials, real opportunities, social links, YouTube/Substack embeds.
+      - Wire integrations: Mailchimp/ConvertKit/Beehiiv lists; Typeform/Tally quizzes; Calendly; GA4; Hotjar; CRM destination (Airtable, Notion, HubSpot, or Cloudflare D1/KV).
+      - Publish path: deploy this folder to Cloudflare Pages, then attach lamonttang.com as custom domain after DNS resolves.
+    -->
+
+    <section class="cta-band">
+      <div class="container reveal">
+        <p class="eyebrow"><span class="idx">11</span>Next Best Step</p>
+        <h2>Not sure where to start? Take the snapshot.</h2>
+        <p class="narrow">A quiz result, a segment choice, a project brief, or a founder challenge is more useful than a generic contact form — for both of us.</p>
+        <div class="hero-actions">
+          <a class="button light" href="#diagnostics">Take the snapshot</a>
+          <a class="button ghost-light" href="#newsletter">Join the list</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>Lamont Tang</h4>
+          <p style="color:rgba(248,246,241,0.62);">AI Strategy. Built in the Trenches. MBA Faculty at AGSM, former AI hardware founder, Stanford StartX affiliate.</p>
+        </div>
+        <div>
+          <h4>Website</h4>
+          <a href="#about">About</a>
+          <a href="#diagnostics">Diagnostics</a>
+          <a href="#book">Book</a>
+          <a href="#content">Content</a>
+        </div>
+        <div>
+          <h4>Programs</h4>
+          <a href="#courses">Courses</a>
+          <a href="#opportunities">MBA Opportunities</a>
+          <a href="#speaking">Speaking</a>
+          <a href="#connect">Connect</a>
+        </div>
+        <div>
+          <h4>Social</h4>
+          <!-- PLACEHOLDER: Verify and replace social URLs before launch. -->
+          <a href="https://www.linkedin.com/search/results/all/?keywords=Lamont%20Tang">LinkedIn</a>
+          <a href="#content">YouTube placeholder</a>
+          <a href="#content">Substack placeholder</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 LAMONT TANG</span>
+        <span>LAMONTTANG.COM · SYDNEY / STANFORD / STARTUP ROOMS</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add("js");
+
+    const nav = document.querySelector(".nav");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector("#navLinks");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      document.body.classList.toggle("menu-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 8);
+    }, { passive: true });
+
+    // Scroll reveal (skipped by CSS when prefers-reduced-motion)
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("in"));
+    }
+
+    const scoreInputs = document.querySelectorAll(".score-input");
+    const scoreBox = document.querySelector("#scoreBox");
+    const scoreFill = document.querySelector("#scoreFill");
+    function getDiagnosticAnswers() {
+      return {
+        leadership: Number(document.querySelector("#leadership").value),
+        culture: Number(document.querySelector("#culture").value),
+        data: Number(document.querySelector("#data").value),
+        workflow: Number(document.querySelector("#workflow").value),
+        governance: Number(document.querySelector("#governance").value)
+      };
+    }
+    function calculateReadiness(answers) {
+      const values = Object.values(answers);
+      const score = Math.round((values.reduce((sum, value) => sum + value, 0) / 25) * 100);
+      let segment = "Useful foundation";
+      let message = "Useful foundation, but adoption risk is still visible.";
+      if (score < 45) {
+        segment = "High readiness gap";
+        message = "High readiness gap. Start with leadership clarity and operating constraints.";
+      }
+      if (score >= 75) {
+        segment = "Ready to scale";
+        message = "Strong base. The next challenge is scaling adoption without theatre.";
+      }
+      return { score, segment, message };
+    }
+    function updateScore() {
+      const answers = getDiagnosticAnswers();
+      const result = calculateReadiness(answers);
+      scoreBox.innerHTML = `Readiness score: <span>${result.score}%</span>. ${result.message}`;
+      if (scoreFill) scoreFill.style.width = `${result.score}%`;
+      document.querySelectorAll(".range-value").forEach((output) => {
+        const key = output.dataset.for;
+        if (key && answers[key] !== undefined) output.textContent = `${answers[key]} / 5`;
+      });
+      return result;
+    }
+    function serializeForm(form) {
+      const formData = new FormData(form);
+      const data = {};
+      for (const [key, value] of formData.entries()) {
+        if (data[key] === undefined) {
+          data[key] = value;
+        } else if (Array.isArray(data[key])) {
+          data[key].push(value);
+        } else {
+          data[key] = [data[key], value];
+        }
+      }
+      return data;
+    }
+    function localReportPdfBase64(payload) {
+      const answers = payload.diagnosticAnswers || getDiagnosticAnswers();
+      const result = calculateReadiness(answers);
+      const lines = [
+        "Lamont Tang - AI Readiness Snapshot",
+        "",
+        `Name: ${payload.data.first_name || "Reader"}`,
+        `Segment: ${payload.data.segment || "Not provided"}`,
+        `Readiness score: ${result.score}%`,
+        `Profile: ${result.segment}`,
+        "",
+        result.message,
+        "",
+        "Dimension scores",
+        `Leadership clarity: ${answers.leadership}/5`,
+        `Culture and incentives: ${answers.culture}/5`,
+        `Data and infrastructure: ${answers.data}/5`,
+        `Workflow adoption: ${answers.workflow}/5`,
+        `Governance judgment: ${answers.governance}/5`,
+        "",
+        "Next step: reply to the diagnostic email or submit an Industry Partner, MBA, or Founder intake form."
+      ];
+      const body = lines.join("\\n");
+      const pdfText = `%PDF-1.1\\n1 0 obj << /Type /Catalog /Pages 2 0 R >> endobj\\n2 0 obj << /Type /Pages /Kids [3 0 R] /Count 1 >> endobj\\n3 0 obj << /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >> endobj\\n4 0 obj << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> endobj\\n5 0 obj << /Length ${body.length + 80} >> stream\\nBT /F1 12 Tf 50 750 Td 14 TL (${body.replace(/[()\\\\]/g, "\\\\$&").replace(/\\n/g, ") Tj T* (")}) Tj ET\\nendstream endobj\\ntrailer << /Root 1 0 R >>\\n%%EOF`;
+      return btoa(unescape(encodeURIComponent(pdfText)));
+    }
+    async function submitLead(form, payload) {
+      const response = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) throw new Error(`Lead endpoint returned ${response.status}`);
+      return response.json();
+    }
+    function setStatus(form, text, type = "") {
+      const status = form.querySelector(".form-status");
+      status.textContent = text;
+      status.className = `form-status show ${type}`.trim();
+    }
+    function setReportDownload(form, base64) {
+      const actions = form.querySelector(".report-actions");
+      const link = form.querySelector(".report-download");
+      if (!actions || !link || !base64) return;
+      link.href = `data:application/pdf;base64,${base64}`;
+      actions.classList.add("show");
+    }
+    scoreInputs.forEach((input) => input.addEventListener("input", updateScore));
+    updateScore();
+
+    document.querySelectorAll(".tab-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const tab = button.dataset.tab;
+        document.querySelectorAll(".tab-button").forEach((item) => item.classList.remove("active"));
+        document.querySelectorAll(".tab-panel").forEach((panel) => panel.classList.remove("active"));
+        button.classList.add("active");
+        document.querySelector(`#tab-${tab}`).classList.add("active");
+      });
+    });
+
+    document.querySelectorAll(".capture-form").forEach((form) => {
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const submitButton = form.querySelector('button[type="submit"]');
+        const data = serializeForm(form);
+        const payload = {
+          formName: form.dataset.formName,
+          data,
+          submittedAt: new Date().toISOString(),
+          pageUrl: window.location.href
+        };
+        if (form.dataset.formName === "diagnostic") {
+          payload.diagnosticAnswers = getDiagnosticAnswers();
+          payload.diagnosticResult = calculateReadiness(payload.diagnosticAnswers);
+        }
+        const key = `lamont_site_${form.dataset.formName}_${Date.now()}`;
+        localStorage.setItem(key, JSON.stringify(payload));
+        setStatus(form, "Sending to the lead workflow...", "");
+        if (submitButton) submitButton.disabled = true;
+        try {
+          const result = await submitLead(form, payload);
+          if (result.pdfBase64) setReportDownload(form, result.pdfBase64);
+          const emailMode = result.email?.mode === "sent" ? "emailed" : "prepared in mock mode";
+          setStatus(form, result.message || `Captured and ${emailMode}.`, "success");
+          form.reset();
+        } catch (error) {
+          if (form.dataset.formName === "diagnostic") {
+            setReportDownload(form, localReportPdfBase64(payload));
+            setStatus(form, "Prototype mode: saved locally and generated a downloadable report. Deploy to Cloudflare Pages Functions with RESEND_API_KEY to send email automatically.", "error");
+          } else {
+            setStatus(form, "Prototype mode: saved locally. Deploy to Cloudflare Pages Functions to route this into email or CRM.", "error");
+          }
+        } finally {
+          if (submitButton) submitButton.disabled = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
